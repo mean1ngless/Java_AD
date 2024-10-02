@@ -8,11 +8,11 @@ public class Lab1 {
         int c11 = 1;
 
         // Task 2: Transpose matrix C
-        byte[][] b = generateMatrix(5, 6);
-        byte[][] c = transposeMatrix(b);
+        byte[][] b = generateMatrix(5, 6); // генерація матриці В, обрав розмірність 5х6
+        byte[][] c = transposeMatrix(b); // транспонування матриці В
 
         // Task 4
-        int sum = calculateMinElements(c);
+        int sum = calculateMinElements(c); // розрахунок суми мін. елементів з кожного рядка
 
         System.out.println("Lab 1: `Масиви в мові програмування Java`");
         System.out.println("\nЗгенерована матриця B:");
@@ -22,7 +22,7 @@ public class Lab1 {
         System.out.println("\nСума найменших елементів кожного рядка матриці С:\n" + sum);
     }
 
-    public static byte[][] transposeMatrix(byte[][] matrix) {
+    public static byte[][] transposeMatrix(byte[][] matrix) { // метод для транспонування матриці
         int rows = matrix.length;
         int cols = matrix[0].length;
         byte[][] transposed = new byte[cols][rows];
@@ -36,7 +36,7 @@ public class Lab1 {
         return transposed;
     }
 
-    public static void printMatrix(byte[][] matrix) {
+    public static void printMatrix(byte[][] matrix) { // метод для виведення матриці у консоль
         for (byte[] row : matrix) {
             for (byte element : row) {
                 System.out.printf("%5d", element);
@@ -45,7 +45,7 @@ public class Lab1 {
         }
     }
 
-    public static byte[][] generateMatrix(int rows, int cols) {
+    public static byte[][] generateMatrix(int rows, int cols) { // генерація матриці
         byte[][] matrix = new byte[rows][cols];
         Random random = new Random();
 
@@ -58,7 +58,7 @@ public class Lab1 {
         return matrix;
     }
 
-    public static int calculateMinElements(byte[][] matrix) {
+    public static int calculateMinElements(byte[][] matrix) { // метод для розрахунків суми мінімальних елементів рядків матриці
         int sum = 0;
         int minElement;
         for (byte[] row : matrix) {
