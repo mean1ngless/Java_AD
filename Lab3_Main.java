@@ -1,7 +1,18 @@
+/**
+ * Головний клас Lab3_Main для демонстрації роботи з масивом об'єктів {@link Automobile},
+ * сортування масиву за різними критеріями та пошук автомобіля за заданими параметрами.
+ */
 public class Lab3_Main {
+    /**
+     * Головний метод програми.
+     * Створює масив об'єктів {@link Automobile}, виконує сортування за ціною (спадання) та номером (зростання),
+     * а також демонструє пошук автомобіля в масиві.
+     *
+     * @param args аргументи командного рядка, не використовуються
+     */
     public static void main(String[] args) {
-        Automobile[] automobiles =    { // Створення масиву автомобілей для прикладу з такими параметрами: бренд, номер, кількість місць у салоні, праворульна чи ні, ціна
-                new Automobile("Mazda", "AB4R2T", 4,false, 20950.45),
+        Automobile[] automobiles = {
+                new Automobile("Mazda", "AB4R2T", 4, false, 20950.45),
                 new Automobile("Toyota", "XC9B2Y", 5, true, 18999.99),
                 new Automobile("Honda", "HY6T8K", 4, false, 21500.75),
                 new Automobile("Ford", "JK3R5Q", 4, true, 17500.50),
@@ -13,19 +24,13 @@ public class Lab3_Main {
                 new Automobile("Hyundai", "PO1L6D", 4, true, 17999.95),
                 new Automobile("Volkswagen", "UZ5Q3X", 5, false, 21900.85)
         };
-        // Сортування за ціною(за спаданням)
+
         System.out.println("Sorted by Price(desc):");
-        MergeSort.mergeSort(automobiles, ObjectComparators.BY_PRICE_DESC);
-        for(Automobile element : automobiles){
+        MergeSort.mergeSort(automobiles, ObjectComparators.BY_F1_ASC_F2_DESC);
+        for (Automobile element : automobiles) {
             System.out.println(element.toString());
         }
-        // Сортування за номером(за зростанням)
-        System.out.println("\nSorted by Number(asc):");
-        MergeSort.mergeSort(automobiles, ObjectComparators.BY_NUMBER);
-        for(Automobile element : automobiles){
-            System.out.println(element.toString());
-        }
-        // Перевірка на наявність автомобіля у масиві
+
         Automobile target = new Automobile("Toyota", "XC9B2Y", 5, true, 18999.98);
         System.out.println("\nПеревіряємо автомобіль: " + target.toString());
         Automobile found = findAutomobile(automobiles, target);
@@ -37,20 +42,19 @@ public class Lab3_Main {
         }
     }
 
-    public static Automobile findAutomobile(Automobile[] automobiles, Automobile target) { // метод для перевірки автомобіля
+    /**
+     * Перевіряє, чи є у масиві {@code automobiles} автомобіль, ідентичний {@code target}.
+     *
+     * @param automobiles масив об'єктів {@link Automobile}
+     * @param target автомобіль для пошуку
+     * @return автомобіль, якщо знайдений, інакше {@code null}
+     */
+    public static Automobile findAutomobile(Automobile[] automobiles, Automobile target) {
         for (Automobile automobile : automobiles) {
-            if (automobile.getBrand().equals(target.getBrand()) &&
-                    automobile.getNumber().equals(target.getNumber()) &&
-                    automobile.getSeatsNumber().equals(target.getSeatsNumber()) &&
-                    automobile.getRightHandDrive().equals(target.getRightHandDrive()) &&
-                    automobile.getPrice().equals(target.getPrice())) {
+            if (automobile.equals(target)) {
                 return automobile;
             }
         }
         return null;
     }
 }
-
-
-
-
