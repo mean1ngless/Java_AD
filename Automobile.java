@@ -5,9 +5,9 @@ public class Automobile {
     private String Number;
     private Integer SeatsNumber;
     private Boolean RightHandDrive;
-    private BigDecimal Price;
+    private Double Price;
 
-    public Automobile(String Brand, String Number, Integer SeatsNumber, Boolean RightHandDrive, BigDecimal Price) {
+    public Automobile(String Brand, String Number, Integer SeatsNumber, Boolean RightHandDrive, Double Price) {
         this.Brand = Brand;
         this.Number = Number;
         this.SeatsNumber = SeatsNumber;
@@ -15,6 +15,10 @@ public class Automobile {
         this.Price = Price;
     }
 
+    @Override
+    public String toString() {
+        return (Brand.toString() + "\t" + Number.toString() + "\t" + SeatsNumber.toString() + "\t" + RightHandDrive.toString() + "\t" + Price.toString());
+    }
     public void setBrand(String Brand) {
         this.Brand = Brand;
     }
@@ -43,10 +47,10 @@ public class Automobile {
         return RightHandDrive;
     }
 
-    public void setPrice(BigDecimal Price) {
+    public void setPrice(Double Price) {
         this.Price = Price;
     }
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return Price;
     }
 }
