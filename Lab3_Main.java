@@ -1,6 +1,6 @@
 public class Lab3_Main {
     public static void main(String[] args) {
-        Automobile[] array =    {
+        Automobile[] automobiles =    {
                 new Automobile("Mazda", "AB4R2T", 4,false, 20950.45),
                 new Automobile("Toyota", "XC9B2Y", 5, true, 18999.99),
                 new Automobile("Honda", "HY6T8K", 4, false, 21500.75),
@@ -13,16 +13,40 @@ public class Lab3_Main {
                 new Automobile("Hyundai", "PO1L6D", 4, true, 17999.95),
                 new Automobile("Volkswagen", "UZ5Q3X", 5, false, 21900.85)
         };
+
         System.out.println("Sorted by Price(desc):");
-        MergeSort.mergeSort(array, ObjectComparators.byPriceDesc);
-        for(Automobile element : array){
+        MergeSort.mergeSort(automobiles, ObjectComparators.BY_PRICE_DESC);
+        for(Automobile element : automobiles){
             System.out.println(element.toString());
         }
         System.out.println("\nSorted by Number(asc):");
-        MergeSort.mergeSort(array, ObjectComparators.byNumber);
-        for(Automobile element : array){
+        MergeSort.mergeSort(automobiles, ObjectComparators.BY_NUMBER);
+        for(Automobile element : automobiles){
             System.out.println(element.toString());
         }
+
+        Automobile target = new Automobile("Toyota", "XC9B2Y", 5, true, 18999.98);
+        System.out.println("\nПеревіряємо автомобіль: " + target.toString());
+        Automobile found = findAutomobile(automobiles, target);
+
+        if (found != null) {
+            System.out.println("Знайдено: " + found);
+        } else {
+            System.out.println("Такий автомобіль не знайдено.");
+        }
+    }
+
+    public static Automobile findAutomobile(Automobile[] automobiles, Automobile target) {
+        for (Automobile automobile : automobiles) {
+            if (automobile.getBrand().equals(target.getBrand()) &&
+                    automobile.getNumber().equals(target.getNumber()) &&
+                    automobile.getSeatsNumber().equals(target.getSeatsNumber()) &&
+                    automobile.getRightHandDrive().equals(target.getRightHandDrive()) &&
+                    automobile.getPrice().equals(target.getPrice())) {
+                return automobile;
+            }
+        }
+        return null;
     }
 }
 
