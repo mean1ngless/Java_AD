@@ -1,6 +1,6 @@
 public class Lab3_Main {
     public static void main(String[] args) {
-        Automobile[] automobiles =    {
+        Automobile[] automobiles =    { // Створення масиву автомобілей для прикладу з такими параметрами: бренд, номер, кількість місць у салоні, праворульна чи ні, ціна
                 new Automobile("Mazda", "AB4R2T", 4,false, 20950.45),
                 new Automobile("Toyota", "XC9B2Y", 5, true, 18999.99),
                 new Automobile("Honda", "HY6T8K", 4, false, 21500.75),
@@ -13,18 +13,19 @@ public class Lab3_Main {
                 new Automobile("Hyundai", "PO1L6D", 4, true, 17999.95),
                 new Automobile("Volkswagen", "UZ5Q3X", 5, false, 21900.85)
         };
-
+        // Сортування за ціною(за спаданням)
         System.out.println("Sorted by Price(desc):");
         MergeSort.mergeSort(automobiles, ObjectComparators.BY_PRICE_DESC);
         for(Automobile element : automobiles){
             System.out.println(element.toString());
         }
+        // Сортування за номером(за зростанням)
         System.out.println("\nSorted by Number(asc):");
         MergeSort.mergeSort(automobiles, ObjectComparators.BY_NUMBER);
         for(Automobile element : automobiles){
             System.out.println(element.toString());
         }
-
+        // Перевірка на наявність автомобіля у масиві
         Automobile target = new Automobile("Toyota", "XC9B2Y", 5, true, 18999.98);
         System.out.println("\nПеревіряємо автомобіль: " + target.toString());
         Automobile found = findAutomobile(automobiles, target);
@@ -36,7 +37,7 @@ public class Lab3_Main {
         }
     }
 
-    public static Automobile findAutomobile(Automobile[] automobiles, Automobile target) {
+    public static Automobile findAutomobile(Automobile[] automobiles, Automobile target) { // метод для перевірки автомобіля
         for (Automobile automobile : automobiles) {
             if (automobile.getBrand().equals(target.getBrand()) &&
                     automobile.getNumber().equals(target.getNumber()) &&

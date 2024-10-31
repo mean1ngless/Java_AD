@@ -29,15 +29,6 @@ public class Automobile {
                 Objects.equals(price, that.price);
     }
 
-    public static Automobile findAutomobile(Automobile[] automobiles, Automobile target) {
-        for (Automobile automobile : automobiles) {
-            if (automobile.equals(target)) {
-                return automobile;
-            }
-        }
-        return null;
-    }
-
     @Override
     public String toString() {
         return brand + "\t" + number + "\t" + seatsNumber + "\t" + rightHandDrive + "\t" + price;

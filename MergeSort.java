@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public class MergeSort {
+public class MergeSort { // сортування Merge Sort
 
     public static void mergeSort(Automobile[] array, Comparator<Automobile> comparator) {
         if (array.length < 2) {
