@@ -1,7 +1,4 @@
-import java.util.*;
-import java.util.stream.Collectors;
-
-class Punctuation {
+public class Punctuation {
     private final char symbol;
 
     public Punctuation(char symbol) {

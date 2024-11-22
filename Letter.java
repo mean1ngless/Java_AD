@@ -1,7 +1,4 @@
-import java.util.*;
-import java.util.stream.Collectors;
-
-class Letter {
+public class Letter {
     private final char value;
 
     public Letter(char value) {

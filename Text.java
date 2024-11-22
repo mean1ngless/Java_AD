@@ -1,7 +1,9 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
-class Text {
+public class Text {
     private final List<Sentence> sentences;
 
     public Text(String text) {

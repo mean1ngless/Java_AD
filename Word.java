@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.stream.Collectors;
 
-class Word {
+public class Word {
     private final List<Letter> letters;
 
     public Word(String word) {
