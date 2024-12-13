@@ -1,4 +1,5 @@
-// Узагальнений клас для солодощів
+import java.util.Objects;
+
 /**
  * Abstract class representing a general sweet.
  * Contains common properties such as name, weight, and sugar content.
@@ -31,6 +32,7 @@ abstract class Sweet {
         return name;
     }
 
+
     public double getWeight() {
         return weight;
     }
@@ -39,8 +41,39 @@ abstract class Sweet {
         return sugarContent;
     }
 
+    /**
+     * Returns a detailed string representation of the sweet.
+     *
+     * @return the sweet's details in string format.
+     */
     @Override
     public String toString() {
-        return String.format("%s: weight=%.2f, sugar=%.2f%%", name, weight, sugarContent);
+        return String.format("%s: weight=%.2f g, sugar=%.2f%%", name, weight, sugarContent);
+    }
+
+    /**
+     * Checks equality based on the name, weight, and sugar content.
+     *
+     * @param obj the object to compare with.
+     * @return true if the objects are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Sweet sweet = (Sweet) obj;
+        return Double.compare(sweet.weight, weight) == 0 &&
+                Double.compare(sweet.sugarContent, sugarContent) == 0 &&
+                Objects.equals(name, sweet.name);
+    }
+
+    /**
+     * Returns a hash code based on the name, weight, and sugar content.
+     *
+     * @return the hash code of the sweet.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, weight, sugarContent);
     }
 }
